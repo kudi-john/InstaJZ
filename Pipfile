@@ -10,6 +10,9 @@ django = "*"
 django-imagekit = "*"
 pillow = "*"
 django-annoying = "*"
+heroku = "*"
+gunicorn = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.8"
