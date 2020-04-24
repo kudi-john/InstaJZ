@@ -25,6 +25,15 @@ class PostsView(ListView):
     #     return Post.objects.filter(author__in=following)
 
 
+class ExploreView(LoginRequiredMixin, ListView):
+    model = Post
+    template_name = 'explore.html'
+    login_url = 'login'
+
+    # def get_queryset(self):
+    #     return Post.objects.all().order_by('-posted_on')[:20]
+
+
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     template_name = 'post_detail.html'
@@ -66,6 +75,12 @@ class EditProfile(LoginRequiredMixin, UpdateView):
     template_name = 'edit_profile.html'
     fields = ['profile_pic', 'username']
     login_url = 'login'
+
+
+class Friend(PostsView):
+    model = InstaUser
+    template_name = "friend.html"
+
 
 
 @ajax_request

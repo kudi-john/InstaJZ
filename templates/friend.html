@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load custom_tags %}
+
+{% block content %}
+
+<div class="friend">
+    <div class="profile__head">
+        <div class="row">
+            <div class="card user {{ object.pk }}">
+                <div class="col-xs-4 left">
+                    <div class="user__info">
+                            <a href="{% url 'user_detail' object.pk %}" class="poster__name">
+                                {% if object.profile_pic %}
+                                    <img class="picture-circle" src="/{{object.profile_pic}}">
+                                {% endif %}
+                                {{ post.author.username }}
+                            </a>
+                    </div>
+                </div>>
+                <div class="col-xs-4 right">
+                    {% is_following user object as following %}
+                     <div class="follow-toggle__container">
+                         <button class="btn btn-primary {% if not following %}follow-user{% else %}unfollow-user{% endif %}" id="{{ object.pk }}">
+                             {% if following %}
+                                 Unfollow
+                             {% else %}
+                                 Follow
+                             {% endif %}
+                         </button>
+                     </div>
+                </div>
+            </div>>
+        </div>>
+    </div>
+</div>
+
+
+{% endblock content %}
